@@ -1,0 +1,11 @@
+version: "3"
+services:
+  install:
+    image: node:10-alpine
+    entrypoint: ["npm"]
+    command: ["install"]
+    working_dir: /app
+    volumes:
+        - ./:/app
+  db:
+    image: postgres:11-alpine
