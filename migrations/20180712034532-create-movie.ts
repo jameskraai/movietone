@@ -5,11 +5,29 @@ export default {
         return queryInterface.createTable('Movies', {
             id: {
                 allowNull: false,
-                autoIncrement: true,
                 primaryKey: true,
-                type: Sequelize.INTEGER
+                type: Sequelize.STRING
             },
-
+            title: {
+                allowNull: false,
+                type: Sequelize.STRING,
+            },
+            genre: {
+                allowNull: true,
+                type: Sequelize.STRING,
+            },
+            actors: {
+                allowNull: true,
+                type: Sequelize.STRING,
+            },
+            year: {
+                allowNull: false,
+                type: Sequelize.INTEGER,
+            },
+            rating: {
+                allowNull: false,
+                type: Sequelize.INTEGER,
+            },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE

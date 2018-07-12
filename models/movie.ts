@@ -13,7 +13,12 @@ export interface MovieInstance {
 
 export default (sequelize: Sequelize, DataTypes: DataTypes) => {
     const Movie = sequelize.define('Movie', {
-        id: DataTypes.STRING
+        id: DataTypes.STRING,
+        title: DataTypes.STRING,
+        genre: DataTypes.STRING,
+        actors: DataTypes.STRING,
+        year: DataTypes.INTEGER,
+        rating: DataTypes.INTEGER
     });
 
     Movie.associate = function(models) {
