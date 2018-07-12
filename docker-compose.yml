@@ -7,5 +7,14 @@ services:
     working_dir: /app
     volumes:
         - ./:/app
+  migrate:
+    image: node:10-alpine
+    command: ["npm", "run", "sequelize", "db:migrate"]
+    working_dir: /app
+    volumes:
+        - ./:/app
+    depends_on:
+      - db
+      - install
   db:
     image: postgres:11-alpine
