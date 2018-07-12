@@ -4,7 +4,7 @@
     "password": null,
     "database": "postgres",
     "host": "db",
-    "dialect": "pg"
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",
