@@ -1,22 +1,27 @@
 version: "3"
 services:
-  install:
-    image: node:10-alpine
+  npm:
+    image: node:8-alpine
     entrypoint: ["npm"]
     command: ["install"]
     working_dir: /app
     volumes:
         - ./:/app
   migrate:
-    image: node:10-alpine
+    image: node:8-alpine
     command: ["npm", "run", "sequelize", "db:migrate"]
     working_dir: /app
     volumes:
         - ./:/app
     depends_on:
+      - npm
       - db
-      - install
   db:
-    image: postgres:11-alpine
+    image: mysql:5
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: movietone
+      MYSQL_USER: movietone
+      MYSQL_PASSWORD: movietone
     ports:
-      - "5432:5432"
+      - "3306:3306"

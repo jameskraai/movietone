@@ -1,7 +1,7 @@
-import { Sequelize, DataTypes } from 'sequelize';
+import { DataTypes, Models, Sequelize } from 'sequelize';
 
 export interface MovieAttributes {
-    id ? : string;
+    id? : string;
 }
 
 export interface MovieInstance {
@@ -11,17 +11,17 @@ export interface MovieInstance {
 
 }
 
-export default (sequelize: Sequelize, DataTypes: DataTypes) => {
+export default (sequelize: Sequelize, dataTypes: DataTypes) => {
     const Movie = sequelize.define('Movie', {
-        id: DataTypes.STRING,
-        title: DataTypes.STRING,
-        genre: DataTypes.STRING,
-        actors: DataTypes.STRING,
-        year: DataTypes.INTEGER,
-        rating: DataTypes.INTEGER
+        actors: dataTypes.STRING,
+        genre: dataTypes.STRING,
+        id: dataTypes.STRING,
+        rating: dataTypes.INTEGER,
+        title: dataTypes.STRING,
+        year: dataTypes.INTEGER,
     });
 
-    Movie.associate = function(models) {
+    Movie.associate = (models: Models) => {
         // associations can be defined here
     };
 
