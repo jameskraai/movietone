@@ -8,7 +8,6 @@
     "@types/react-router": "^4.0.28",
     "@types/react-router-dom": "^4.2.7",
     "@types/react-router-redux": "^5.0.15",
-    "@types/sequelize": "^4.27.23",
     "express": "^4.16.3",
     "immutable": "^3.8.2",
     "mysql2": "^1.5.3",
@@ -21,8 +20,6 @@
     "react-scripts-ts": "2.16.0",
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
-    "sequelize": "^4.38.0",
-    "sequelize-cli-typescript": "^3.2.0-c",
     "tsc-watch": "^1.0.22"
   },
   "scripts": {
@@ -32,7 +29,6 @@
     "eject": "react-scripts-ts eject",
     "lint": "tslint -p ./",
     "storybook": "start-storybook -p 9001",
-    "sequelize": "sequelize",
     "api:start": "node ./api/dist/server.js",
     "api:tsc": "tsc -p ./api",
     "api:tsc-watch": "tsc-watch ./api/server.ts --outDir ./api/dist --onSuccess \"node ./api/dist/server.js\""

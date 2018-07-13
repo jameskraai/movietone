@@ -7,15 +7,6 @@ services:
     working_dir: /app
     volumes:
         - ./:/app
-  migrate:
-    image: node:8-alpine
-    command: ["npm", "run", "sequelize", "db:migrate"]
-    working_dir: /app
-    volumes:
-        - ./:/app
-    depends_on:
-      - npm
-      - db
   db:
     image: mysql:5
     environment:
@@ -23,5 +14,7 @@ services:
       MYSQL_DATABASE: movietone
       MYSQL_USER: movietone
       MYSQL_PASSWORD: movietone
+    volumes:
+      - ./api/db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "3306:3306"
