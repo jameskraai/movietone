@@ -1,28 +1,32 @@
 version: "3"
 services:
   npm:
-    image: node:8-alpine
+    image: node:10-alpine
     entrypoint: ["npm"]
     command: ["install"]
     working_dir: /app
     volumes:
         - ./:/app
   api:
-    image: node:8-alpine
+    image: node:10-alpine
     entrypoint: ["npm"]
-    command: ["api:tsc-watch"]
+    command: ["run", "api:tsc-watch"]
     working_dir: /app
     env_file: .env
+    ports:
+      - "3000:3000"
     volumes:
-      - ./:app
+      - ./:/app
     depends_on:
       - npm
+      - db
   db:
     image: mysql:5
     env_file: .env
+    tty: true
     environment:
-      MYSQL_ROOT_PASSWORD: root # Specified here since we don't want it available in node
-    volumes:
-      - ./api/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3306:3306"
+        - "3306:3306"
+    volumes:
+      - "./api/db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro"
