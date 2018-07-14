@@ -7,13 +7,21 @@ services:
     working_dir: /app
     volumes:
         - ./:/app
+  api:
+    image: node:8-alpine
+    entrypoint: ["npm"]
+    command: ["api:tsc-watch"]
+    working_dir: /app
+    env_file: .env
+    volumes:
+      - ./:app
+    depends_on:
+      - npm
   db:
     image: mysql:5
+    env_file: .env
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: movietone
-      MYSQL_USER: movietone
-      MYSQL_PASSWORD: movietone
+      MYSQL_ROOT_PASSWORD: root # Specified here since we don't want it available in node
     volumes:
       - ./api/db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
