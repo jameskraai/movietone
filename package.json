@@ -11,6 +11,7 @@
     "@types/react-router-dom": "^4.2.7",
     "@types/react-router-redux": "^5.0.15",
     "@types/uuid": "^3.4.3",
+    "@types/validator": "^9.4.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "immutable": "^3.8.2",
@@ -26,7 +27,8 @@
     "redux-saga": "^0.16.0",
     "sqlite3": "^4.0.1",
     "tsc-watch": "^1.0.22",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "validator": "^10.4.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",
