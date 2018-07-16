@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { MysqlError } from "mysql";
 import { db } from "../../db";
+import { IMovie } from "../../db/DataTypes";
 
 class Builder {
     private query: string = "";
@@ -72,6 +73,29 @@ export const getMovies = (req: Request, res: Response) => {
             return;
         }
 
-        res.send(results);
+        const data: any = [];
+
+        if (results.length) {
+            results.forEach((movie: IMovie) => {
+                data.push({
+                    attributes: {
+                        actors: movie.actors,
+                        createdAt: movie.createdAt,
+                        genre: movie.genre,
+                        rating: movie.rating,
+                        title: movie.title,
+                        updated: movie.updated,
+                        year: movie.year,
+                    },
+                    id: movie.id,
+                    type: "movies",
+                });
+            });
+        }
+
+
+        res.send({
+            data
+        });
     });
 };
