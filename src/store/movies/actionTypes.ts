@@ -2,7 +2,7 @@ import { Action } from "redux";
 import { IMovie } from "../../../api/db/DataTypes";
 import TypeKeys from "./TypeKeys";
 
-interface IParam {
+export interface IParam {
     key: string;
     value: any;
 }
