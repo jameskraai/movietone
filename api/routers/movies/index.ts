@@ -1,13 +1,10 @@
 import { Request, Response, Router } from "express";
-import {   MysqlError, QueryOptions } from "mysql";
-import { v4 as uuid } from "uuid";
 import { createMovie } from "./createMovie";
+import { getMovies } from "./getMovies"
 
 export const movieController: Router = Router();
 
-movieController.get('/', (req: Request, res: Response) => {
-    res.send('hello again');
-});
+movieController.get('/', getMovies);
 
 movieController.get('/:movieId', () => {
     //
