@@ -3,18 +3,6 @@ import { MysqlError } from "mysql";
 import { db } from "../../db";
 import { IMovie } from "../../db/DataTypes";
 
-class PatchBuilder {
-    private query: string = "";
-    private values: any = [];
-
-
-}
-
-interface ISetClause {
-    column: string;
-    value: any;
-}
-
 export const patchMovie = (req: Request, res: Response) => {
     db.query({
         sql: "SELECT * FROM movies WHERE id = ?",

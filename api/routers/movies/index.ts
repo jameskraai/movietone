@@ -1,5 +1,6 @@
 import { Request, Response, Router } from "express";
 import { createMovie } from "./createMovie";
+import { deleteMovie } from "./deleteMovie";
 import { getMovie } from "./getMovie";
 import { getMovies } from "./getMovies"
 import { patchMovie } from "./patchMovie";
@@ -14,6 +15,4 @@ movieController.post('/:movieId', createMovie);
 
 movieController.patch('/:movieId', patchMovie);
 
-movieController.delete(':movieId', () => {
-    //
-});
+movieController.delete('/:movieId', deleteMovie);
