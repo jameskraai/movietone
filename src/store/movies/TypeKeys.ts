@@ -1,5 +1,6 @@
 enum TypeKeys {
     GET_MOVIES   = 'GET_MOVIES',
+    SET_MOVIES   = 'SET_MOVIES',
     GET_MOVIE    = 'GET_MOVIE',
     CREATE_MOVIE = 'CREATE_MOVIE',
     UPDATE_MOVIE = 'UPDATE_MOVIE',
