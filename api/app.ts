@@ -1,11 +1,7 @@
 import bodyParser = require("body-parser");
 import express = require("express");
-import { movieController } from "./controllers/movie.controller";
+import { movieController } from "./routers/movies";
 
 export const app = express();
-
-app.use(bodyParser.raw({
-    type: 'application/vnd.api+json',
-}));
-
+app.use(bodyParser.json());
 app.use('/movies', movieController);
