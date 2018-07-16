@@ -17,6 +17,11 @@ export interface IGetMovies extends Action {
     type: TypeKeys.GET_MOVIES,
 }
 
+export interface ISetMovies extends Action {
+    movies: IMovie[],
+    type: TypeKeys.SET_MOVIES,
+}
+
 export interface ICreateMovie extends Action {
     movie: IMovie,
     type: TypeKeys.CREATE_MOVIE
