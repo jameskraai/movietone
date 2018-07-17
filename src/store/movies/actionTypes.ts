@@ -1,5 +1,5 @@
 import { Action } from "redux";
-import { IMovie } from "../../../api/db/DataTypes";
+import { IMovie, MovieList } from "../../../api/db/DataTypes";
 import TypeKeys from "./TypeKeys";
 
 export interface IParam {
@@ -13,12 +13,12 @@ export interface IGetMovie extends Action {
 }
 
 export interface IGetMovies extends Action {
-    params?: IParam[];
+    params?: {};
     type: TypeKeys.GET_MOVIES,
 }
 
 export interface ISetMovies extends Action {
-    movies: IMovie[],
+    movies: MovieList,
     type: TypeKeys.SET_MOVIES,
 }
 

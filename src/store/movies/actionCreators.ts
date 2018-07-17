@@ -1,10 +1,10 @@
-import { IMovie } from "../../../api/db/DataTypes";
+import { IMovie, MovieList } from "../../../api/db/DataTypes";
 import * as actionTypes from "./actionTypes";
-import { IParam } from "./actionTypes";
 import TypeKeys from "./TypeKeys";
 
-export type IGetMovies = (params?: IParam[]) => actionTypes.IGetMovies;
-export type ISetMovies = (movies: IMovie[]) => actionTypes.ISetMovies;
+
+export type IGetMovies = ({}?) => actionTypes.IGetMovies;
+export type ISetMovies = (movies: MovieList) => actionTypes.ISetMovies;
 export type ICreateMovie = (movie: IMovie) => actionTypes.ICreateMovie;
 export type IUpdateMovie = (movie: IMovie) => actionTypes.IUpdateMovie;
 export type IDeleteMovie = (id: string) => actionTypes.IDeleteMovie;
@@ -12,9 +12,9 @@ export type IDeleteMovie = (id: string) => actionTypes.IDeleteMovie;
 /**
  * Get Movies optionally with certain parameters
  *
- * @param {IParam[]} params Parameters that will be used in the API call
+ * @param {{}} params Parameters that will be used in the API call
  */
-export const getMovies: IGetMovies = (params?: IParam[]): actionTypes.IGetMovies => ({
+export const getMovies: IGetMovies = (params?: {}): actionTypes.IGetMovies => ({
     params,
     type: TypeKeys.GET_MOVIES
 });
@@ -22,9 +22,9 @@ export const getMovies: IGetMovies = (params?: IParam[]): actionTypes.IGetMovies
 /**
  * Set the given Movies to the store.
  *
- * @param {IMovie[]} movies
+ * @param {MovieList} movies
  */
-export const setMovies: ISetMovies = (movies: IMovie[]): actionTypes.ISetMovies => ({
+export const setMovies: ISetMovies = (movies: MovieList): actionTypes.ISetMovies => ({
     movies,
     type: TypeKeys.SET_MOVIES,
 });

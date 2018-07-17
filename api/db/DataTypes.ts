@@ -1,3 +1,5 @@
+import { List, Map } from "immutable";
+
 export interface IMovie {
     id?: string;
     title: string;
@@ -8,3 +10,7 @@ export interface IMovie {
     createdAt: string;
     updated: string;
 }
+
+export type MovieMap = Map<string, string | number>;
+export type MovieList = List<MovieMap>;
+
