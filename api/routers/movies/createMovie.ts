@@ -18,8 +18,6 @@ const missingProperty = (name: string): {detail: string, title: string} => {
  * @param {Response} res 
  */
 export const createMovie = (req: Request, res: Response) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     // Check if title and year are in the request.
     const { title, year } = req.body;
 
