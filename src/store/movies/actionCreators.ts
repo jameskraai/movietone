@@ -1,4 +1,4 @@
-import { IMovie, MovieList, MovieMap } from "../../../api/db/DataTypes";
+import { MovieList, MovieMap } from "../../../api/db/DataTypes";
 import * as actionTypes from "./actionTypes";
 import TypeKeys from "./TypeKeys";
 

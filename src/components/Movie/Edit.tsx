@@ -7,6 +7,8 @@ import { MovieMap } from "../../../api/db/DataTypes";
 import { 
     clearEditing,
     ClearEditingFn,
+    saveMovie,
+    SaveMovieFn,
     setEditingField, 
     SetEditingFieldFn
 } from "../../store/movies/actionCreators";
@@ -16,12 +18,18 @@ import { IState } from "../../store/State";
 interface IProps extends RouteComponentProps<any, any> {
     clearEditing: ClearEditingFn,
     currentMovie: MovieMap;
+    saveMovie: SaveMovieFn;
     setEditingField: SetEditingFieldFn;
 }
 
 export const Edit = (props: IProps) => {
     const onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         props.setEditingField(event.target.name, event.target.value);
+    };
+
+    const onSave = () => {
+        props.saveMovie();
+        props.history.push('/');
     };
 
     const onCancel = () => {
@@ -66,7 +74,7 @@ export const Edit = (props: IProps) => {
                 placeholder={props.currentMovie.get('year') as string}
                 onChange={onChange}
             />
-            <button>Save & Return</button>
+            <button onClick={onSave}>Save & Return</button>
             <button onClick={onCancel}>Cancel</button>
         </form>
     );
@@ -77,7 +85,7 @@ const mapStateToProps = (state: IState): {} => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => (
-    bindActionCreators({ clearEditing, setEditingField }, dispatch)
+    bindActionCreators({ clearEditing, saveMovie, setEditingField }, dispatch)
 );
 
 export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(Edit as any);
