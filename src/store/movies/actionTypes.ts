@@ -1,5 +1,5 @@
 import { Action } from "redux";
-import { IMovie, MovieList, MovieMap } from "../../../api/db/DataTypes";
+import { MovieList, MovieMap } from "../../../api/db/DataTypes";
 import TypeKeys from "./TypeKeys";
 
 export interface IParam {
