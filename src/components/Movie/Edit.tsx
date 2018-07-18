@@ -1,23 +1,83 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
+import { bindActionCreators } from "redux";
 import { compose } from "redux";
 import { MovieMap } from "../../../api/db/DataTypes";
+import { 
+    clearEditing,
+    ClearEditingFn,
+    setEditingField, 
+    SetEditingFieldFn
+} from "../../store/movies/actionCreators";
 import { getActiveMovie } from "../../store/movies/selectors";
 import { IState } from "../../store/State";
 
 interface IProps extends RouteComponentProps<any, any> {
-    movie: MovieMap;
+    clearEditing: ClearEditingFn,
+    currentMovie: MovieMap;
+    setEditingField: SetEditingFieldFn;
 }
 
-export const Edit = (props: IProps) => (
-    <section>
-        <h1>{props.movie.get("title")}</h1>
-    </section>
-);
+export const Edit = (props: IProps) => {
+    const onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+        props.setEditingField(event.target.name, event.target.value);
+    };
+
+    const onCancel = () => {
+        props.clearEditing()
+        props.history.push('/');
+    };
+
+    return (
+        <form>
+            <label htmlFor="title">Title:</label>
+            <input
+                type="text"
+                name="title"
+                placeholder={props.currentMovie.get('title') as string}
+                onChange={onChange}
+            />
+            <label htmlFor="actors">Actor:</label>
+            <input
+                type="text"
+                name="actors"
+                placeholder={props.currentMovie.get('actors') as string}
+                onChange={onChange}
+            />
+            <label htmlFor="genre">Genre:</label>
+            <input
+                type="text"
+                name="genre"
+                placeholder={props.currentMovie.get('genre') as string}
+                onChange={onChange}
+            />
+            <label htmlFor="rating">Rating:</label>
+            <input
+                type="number"
+                name="rating"
+                placeholder={props.currentMovie.get('rating') as string}
+                onChange={onChange}
+            />
+            <label htmlFor="year">Year:</label>
+            <input
+                type="number"
+                name="year"
+                placeholder={props.currentMovie.get('year') as string}
+                onChange={onChange}
+            />
+            <button>Save & Return</button>
+            <button onClick={onCancel}>Cancel</button>
+        </form>
+    );
+}
 
 const mapStateToProps = (state: IState): {} => ({
-    movie: getActiveMovie(state),
+    currentMovie: getActiveMovie(state),
 });
 
-export default compose(withRouter, connect(mapStateToProps, null))(Edit);
+const mapDispatchToProps = (dispatch: any) => (
+    bindActionCreators({ clearEditing, setEditingField }, dispatch)
+);
+
+export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(Edit as any);
