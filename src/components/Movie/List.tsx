@@ -13,23 +13,29 @@ interface IProps extends RouteComponentProps<any, any> {
     setActiveMovie: ISetActiveMovie;
 }
 
-export const List = (props: IProps) => (
-    <section>
-        <h1>Movie List</h1>
-        <ul>
-            {props.list.map((movie: MovieMap, key: number) => {
-                return (
-                 <ListItem
-                        key={key}
-                        movie={movie}
-                        push={props.history.push}
-                        setActiveMovie={props.setActiveMovie} 
-                    />
-                );
-            })}
-        </ul>
-    </section>
-);
+export const List = (props: IProps) => {
+    const click = () => {
+        props.history.push('/create');
+    };
+    return (
+        <section>
+            <h1>Movie List</h1>
+            <button onClick={click}>Create New Movie</button>
+            <ul>
+                {props.list.map((movie: MovieMap, key: number) => {
+                    return (
+                    <ListItem
+                            key={key}
+                            movie={movie}
+                            push={props.history.push}
+                            setActiveMovie={props.setActiveMovie} 
+                        />
+                    );
+                })}
+            </ul>
+        </section>
+    );
+};
 
 const mapStateToProps = (state: IState): {} => ({
     list: getList(state),

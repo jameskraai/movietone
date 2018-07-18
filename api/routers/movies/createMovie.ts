@@ -80,25 +80,17 @@ export const createMovie = (req: Request, res: Response) => {
         const errors = [];
 
         if (req.body.rating) {
-            if (typeof req.body.rating !== 'number') {
-                errors.push({
-                    detail: `Rating must be a number, received: ${typeof req.body.rating}`,
-                    title: `Rating invalid type`
-                });
-            }
-
-            if (typeof req.body.rating === 'number' && (req.body.rating > 5 || req.body.rating < 0)) {
+            if (req.body.rating && (req.body.rating > 5 || req.body.rating < 0)) {
                 errors.push({
                     detai: `Rating must be between 0 and 5, received: ${req.body.rating}`,
                     title: `Rating out of range`
                 })
             }
         }
-
-        if (req.body.year && typeof req.body.year !== 'number') {
+        if (!req.body.year) {
             errors.push({
-                detail: `Year must be a number, received: ${typeof req.body.rating}`,
-                title: `Year invalid type`
+                detail: `Year must be a set, received: ${typeof req.body.year}`,
+                title: `Year missing`
             });
         }
 
