@@ -36,3 +36,12 @@ export interface IDeleteMovie extends Action {
     id: string;
     type: TypeKeys.DELETE_MOVIE,
 }
+
+export type ActionTypes =
+    IGetMovie |
+    IGetMovies |
+    ISetMovies |
+    ICreateMovie |
+    IUpdateMovie |
+    IDeleteMovie;
+
