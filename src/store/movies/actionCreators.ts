@@ -5,9 +5,9 @@ import TypeKeys from "./TypeKeys";
 export type IGetMovies = ({}?) => actionTypes.IGetMovies;
 export type ISetMovies = (movies: MovieList) => actionTypes.ISetMovies;
 export type ISetActiveMovie = (movie: MovieMap | null) => actionTypes.ISetActiveMovie;
-export type ICreateMovie = (movie: IMovie) => actionTypes.ICreateMovie;
-export type IUpdateMovie = (movie: IMovie) => actionTypes.IUpdateMovie;
 export type IDeleteMovie = (id: string) => actionTypes.IDeleteMovie;
+
+export type SaveMovieFn = () => actionTypes.ISaveMovie;
 
 export type SetEditingFieldFn = (field: string, value: any) => actionTypes.ISetEditingField;
 export type ClearEditingFn = () => actionTypes.IClearEditing;
@@ -41,26 +41,6 @@ export const setActiveMovie: ISetActiveMovie = (movie: MovieMap | null): actionT
 });
 
 /**
- * Create a new Movie given the Movie object.
- *
- * @param {IMovie} movie Movie to be created
- */
-export const createMovie: ICreateMovie = (movie: IMovie): actionTypes.ICreateMovie => ({
-    movie,
-    type: TypeKeys.CREATE_MOVIE,
-});
-
-/**
- * Update a Movies properties given the properties set on the Movie.
- *
- * @param {IMovie} movie
- */
-export const updateMovie: IUpdateMovie = (movie: IMovie): actionTypes.IUpdateMovie => ({
-    movie,
-    type: TypeKeys.UPDATE_MOVIE,
-});
-
-/**
  * Delete the Movie with the provided ID.
  *
  * @param {string} id
@@ -88,4 +68,8 @@ export const setCreatingField: SetCreatingFieldFn = (field: string, value: any):
 
 export const clearCreating: ClearCreatingFn = (): actionTypes.IClearCreating => ({
     type: TypeKeys.CLEAR_CREATING,
+});
+
+export const saveMovie: SaveMovieFn = (): actionTypes.ISaveMovie => ({
+    type: TypeKeys.SAVE_MOVIE,
 });

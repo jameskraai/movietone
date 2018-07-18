@@ -27,14 +27,8 @@ export interface ISetActiveMovie extends Action {
     type: TypeKeys.SET_ACTIVE_MOVIE,
 }
 
-export interface ICreateMovie extends Action {
-    movie: IMovie,
-    type: TypeKeys.CREATE_MOVIE
-}
-
-export interface IUpdateMovie extends Action {
-    movie: IMovie,
-    type: TypeKeys.UPDATE_MOVIE
+export interface ISaveMovie extends Action {
+    type: TypeKeys.SAVE_MOVIE,
 }
 
 export interface IDeleteMovie extends Action {
@@ -67,11 +61,10 @@ export type ActionTypes =
     IGetMovies        |
     ISetMovies        |
     ISetActiveMovie   |
-    ICreateMovie      |
-    IUpdateMovie      |
     IDeleteMovie      |
     ISetEditingField  |
     IClearEditing     |
     ISetCreatingField | 
-    IClearCreating    ;
+    IClearCreating    |
+    ISaveMovie        ;
 
