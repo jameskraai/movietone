@@ -3,6 +3,6 @@ import movieSaga from "./movies/sagas";
 
 export default function*() {
     yield all([
-        movieSaga
+        movieSaga()
     ]);
 }

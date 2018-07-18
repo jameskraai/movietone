@@ -13,6 +13,7 @@ export default function*(action: IGetMovies) {
         const queryParams: string = yield call(stringify, action.params);
         url = url + queryParams;
     }
+    try {
     const res: AxiosResponse<IResponse<IMovie>> = yield call(api.get, url);
     if (!res.data.data || res.data.data.length === 0) {
         return;
@@ -26,5 +27,8 @@ export default function*(action: IGetMovies) {
     });
 
     yield put(setMovies(movies));
+    } catch(e) {
+        console.error(e); // tslint:disable-line
+    }
 }
 
