@@ -11,7 +11,7 @@ interface IProps {
 export const ListItem = (props: IProps) => {
     const onEdit = () => {
         props.setActiveMovie(props.movie);
-        props.push(`/movies/${props.movie.get('id')}`)
+        props.push(`/${props.movie.get('id')}`)
     };
     return (
     <li>
