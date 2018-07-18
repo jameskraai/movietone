@@ -52,6 +52,10 @@ export const getMovies = (req: Request, res: Response) => {
         builder.addWhere('rating', req.query.rating);
     }
 
+    if (req.query.year) {
+        builder.addWhere('year', req.query.year);
+    }
+
 
     db.query({
         sql: builder.getQuery(),

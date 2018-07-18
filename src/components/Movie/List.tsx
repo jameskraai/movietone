@@ -6,6 +6,7 @@ import { MovieList, MovieMap } from "../../../api/db/DataTypes";
 import { ISetActiveMovie, setActiveMovie } from "../../store/movies/actionCreators";
 import { getList } from "../../store/movies/selectors";
 import { IState } from "../../store/State";
+import MovieFilters from "./Filters";
 import { ListItem } from "./ListItem";
 
 interface IProps extends RouteComponentProps<any, any> {
@@ -20,6 +21,7 @@ export const List = (props: IProps) => {
     return (
         <section>
             <h1>Movie List</h1>
+            <MovieFilters/>
             <button onClick={click}>Create New Movie</button>
             <ul>
                 {props.list.map((movie: MovieMap, key: number) => {
