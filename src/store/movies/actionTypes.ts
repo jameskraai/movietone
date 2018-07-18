@@ -23,7 +23,7 @@ export interface ISetMovies extends Action {
 }
 
 export interface ISetActiveMovie extends Action {
-    movie: MovieMap,
+    movie: MovieMap | null,
     type: TypeKeys.SET_ACTIVE_MOVIE,
 }
 

@@ -5,7 +5,7 @@ import TypeKeys from "./TypeKeys";
 
 export type IGetMovies = ({}?) => actionTypes.IGetMovies;
 export type ISetMovies = (movies: MovieList) => actionTypes.ISetMovies;
-export type ISetActiveMovie = (movie: MovieMap) => actionTypes.ISetActiveMovie;
+export type ISetActiveMovie = (movie: MovieMap | null) => actionTypes.ISetActiveMovie;
 export type ICreateMovie = (movie: IMovie) => actionTypes.ICreateMovie;
 export type IUpdateMovie = (movie: IMovie) => actionTypes.IUpdateMovie;
 export type IDeleteMovie = (id: string) => actionTypes.IDeleteMovie;
@@ -30,7 +30,7 @@ export const setMovies: ISetMovies = (movies: MovieList): actionTypes.ISetMovies
     type: TypeKeys.SET_MOVIES,
 });
 
-export const setActiveMovie: ISetActiveMovie = (movie: MovieMap): actionTypes.ISetActiveMovie => ({
+export const setActiveMovie: ISetActiveMovie = (movie: MovieMap | null): actionTypes.ISetActiveMovie => ({
     movie,
     type: TypeKeys.SET_ACTIVE_MOVIE,
 });
