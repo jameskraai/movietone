@@ -42,12 +42,36 @@ export interface IDeleteMovie extends Action {
     type: TypeKeys.DELETE_MOVIE,
 }
 
+export interface ISetEditingField extends Action {
+    field: string;
+    type: TypeKeys.SET_EDITING_FIELD;
+    value: any;
+}
+
+export interface IClearEditing extends Action {
+    type: TypeKeys.CLEAR_EDITING;
+}
+
+export interface ISetCreatingField extends Action {
+    field: string;
+    type: TypeKeys.SET_CREATING_FIELD;
+    value: any;
+}
+
+export interface IClearCreating extends Action {
+    type: TypeKeys.CLEAR_CREATING;
+}
+
 export type ActionTypes =
-    IGetMovie |
-    IGetMovies |
-    ISetMovies |
-    ISetActiveMovie |
-    ICreateMovie |
-    IUpdateMovie |
-    IDeleteMovie;
+    IGetMovie         |
+    IGetMovies        |
+    ISetMovies        |
+    ISetActiveMovie   |
+    ICreateMovie      |
+    IUpdateMovie      |
+    IDeleteMovie      |
+    ISetEditingField  |
+    IClearEditing     |
+    ISetCreatingField | 
+    IClearCreating    ;
 
