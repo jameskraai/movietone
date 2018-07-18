@@ -13,7 +13,6 @@ export interface IGetMovie extends Action {
 }
 
 export interface IGetMovies extends Action {
-    params?: {};
     type: TypeKeys.GET_MOVIES,
 }
 

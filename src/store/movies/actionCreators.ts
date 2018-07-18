@@ -2,7 +2,7 @@ import { MovieList, MovieMap } from "../../../api/db/DataTypes";
 import * as actionTypes from "./actionTypes";
 import TypeKeys from "./TypeKeys";
 
-export type IGetMovies = ({}?) => actionTypes.IGetMovies;
+export type IGetMovies = () => actionTypes.IGetMovies;
 export type ISetMovies = (movies: MovieList) => actionTypes.ISetMovies;
 export type ISetActiveMovie = (movie: MovieMap | null) => actionTypes.ISetActiveMovie;
 export type IDeleteMovie = (id: string) => actionTypes.IDeleteMovie;
@@ -24,7 +24,6 @@ export type DeleteFilterFn = (field: string) => actionTypes.IDeleteFilter;
  * @param {{}} params Parameters that will be used in the API call
  */
 export const getMovies: IGetMovies = (params?: {}): actionTypes.IGetMovies => ({
-    params,
     type: TypeKeys.GET_MOVIES
 });
 

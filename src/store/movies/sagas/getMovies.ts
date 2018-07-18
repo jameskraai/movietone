@@ -1,17 +1,19 @@
 import { AxiosResponse } from "axios";
 import { List, Map } from "immutable";
 import { stringify } from "query-string";
-import { call, put } from "redux-saga/effects";
+import { call, put, select } from "redux-saga/effects";
 import { IMovie, MovieList, MovieMap } from "../../../../api/db/DataTypes";
 import { api, IResource, IResponse } from "../../../api";
 import { setMovies } from "../actionCreators";
 import { IGetMovies } from "../actionTypes";
+import { getFilters } from "../selectors";
 
 export default function*(action: IGetMovies) {
-    let url: string = '/movies?';
-    if (action.params) {
-        const queryParams: string = yield call(stringify, action.params);
-        url = url + queryParams;
+    let url: string = '/movies';
+    const filters: Map<string, any> = yield select(getFilters);
+    if (filters.size > 0) {
+        const queryParams: string = yield call(stringify, filters.toObject());
+        url = url + '?' + queryParams;
     }
     try {
     const res: AxiosResponse<IResponse<IMovie>> = yield call(api.get, url);
