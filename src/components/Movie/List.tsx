@@ -1,8 +1,9 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { MovieList, MovieMap } from "../../../api/db/DataTypes";
+import { MovieList } from "../../../api/db/DataTypes";
 import { getList } from "../../store/movies/selectors";
 import { IState } from "../../store/State";
+import { ListItem } from "./ListItem";
 
 interface IProps {
     list: MovieList;
@@ -11,7 +12,7 @@ interface IProps {
 export const List = (props: IProps) => (
     <section>
         <h1>Movie List</h1>
-        {props.list.map((movie: MovieMap) => (<p>{movie.get("title")}</p>))}
+        {props.list.map(ListItem)}
     </section>
 );
 
