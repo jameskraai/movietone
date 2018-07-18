@@ -39,7 +39,7 @@ export const Edit = (props: IProps) => {
 
     return (
         <form>
-            <label htmlFor="title">Title:</label>
+            <label htmlFor="title">Title:test</label>
             <input
                 type="text"
                 name="title"
