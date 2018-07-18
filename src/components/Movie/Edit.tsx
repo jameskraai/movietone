@@ -7,6 +7,8 @@ import { MovieMap } from "../../../api/db/DataTypes";
 import { 
     clearEditing,
     ClearEditingFn,
+    deleteMovie,
+    IDeleteMovie,
     saveMovie,
     SaveMovieFn,
     setEditingField, 
@@ -18,6 +20,7 @@ import { IState } from "../../store/State";
 interface IProps extends RouteComponentProps<any, any> {
     clearEditing: ClearEditingFn,
     currentMovie?: MovieMap;
+    deleteMovie: IDeleteMovie;
     saveMovie: SaveMovieFn;
     setEditingField: SetEditingFieldFn;
 }
@@ -35,6 +38,14 @@ export const Edit = (props: IProps) => {
     const onCancel = () => {
         props.clearEditing()
         props.history.push('/');
+    };
+
+    const onDelete = (e: any) => {
+        e.preventDefault();
+        if (props.currentMovie) {
+            props.deleteMovie(props.currentMovie.get('id') as string);
+            props.history.push('/');
+        }
     };
 
     return (
@@ -76,6 +87,7 @@ export const Edit = (props: IProps) => {
             />
             <button onClick={onSave}>Save & Return</button>
             <button onClick={onCancel}>Cancel</button>
+            <button onClick={onDelete}>Delete</button>
         </form>
     );
 }
@@ -85,7 +97,7 @@ const mapStateToProps = (state: IState): {} => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => (
-    bindActionCreators({ clearEditing, saveMovie, setEditingField }, dispatch)
+    bindActionCreators({ clearEditing, deleteMovie, saveMovie, setEditingField }, dispatch)
 );
 
 export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(Edit as any);
