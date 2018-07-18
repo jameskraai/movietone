@@ -1,13 +1,18 @@
 import * as React from "react";
 import { MovieMap } from "../../../api/db/DataTypes";
+import { ISetActiveMovie } from "../../store/movies/actionCreators";
 
 interface IProps {
     movie: MovieMap;
+    setActiveMovie: ISetActiveMovie;
     push: (path: string) => void;
 }
 
 export const ListItem = (props: IProps) => {
-    const onEdit = () => (props.push(`/movies/${props.movie.get('id')}`));
+    const onEdit = () => {
+        props.setActiveMovie(props.movie);
+        props.push(`/movies/${props.movie.get('id')}`)
+    };
     return (
     <li>
         <p>Title: {props.movie.get("title")}</p>
