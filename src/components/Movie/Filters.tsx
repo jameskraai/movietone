@@ -53,7 +53,7 @@ export class Filters extends React.Component<IProps, IState> {
                 <label htmlFor="field">Field:</label>
                 <select name="field" onChange={onChange} value={this.state.newField}>
                     <option>---select---</option>
-                    <option value="title">Title</option>
+                    <option value="title">Title</option>ß
                     <option value="genre">Genre</option>
                     <option value="actors">Actors</option>
                     <option value="rating">Rating</option>
@@ -62,8 +62,20 @@ export class Filters extends React.Component<IProps, IState> {
                 <label htmlFor="value">Value:</label>
                 <input type="text" name="value" onChange={onChange} value={this.state.newValue}/>
                 <button disabled={!this.state.newField || !this.state.newValue} onClick={onApply}>Add Filter</button>
-            </form>
 
+                <ul>
+                {this.props.filters.map((value: any, key: string) => {
+                    const onClick = () => (this.props.deleteFilter(key));
+                    return (
+                        <li key={''}>
+                            <p>Field: {key}</p>
+                            <p>Value: {value}</p>
+                            <button onClick={onClick}>Remove</button>
+                        </li>
+                    );
+                })}
+                </ul>
+            </form>
         );
     }
 }

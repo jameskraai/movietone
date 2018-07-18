@@ -16,7 +16,7 @@ export type SetCreatingFieldFn = (field: string, value: any) => actionTypes.ISet
 export type ClearCreatingFn = () => actionTypes.IClearCreating;
 
 export type AddFilterFn = (field: string, value: any) => actionTypes.IAddFilter;
-export type DeleteFilterFn = (field: string, value: any) => actionTypes.IDeleteFilter;
+export type DeleteFilterFn = (field: string) => actionTypes.IDeleteFilter;
 
 /**
  * Get Movies optionally with certain parameters
