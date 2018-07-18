@@ -9,6 +9,8 @@ enum TypeKeys {
     SET_CREATING_FIELD = 'SET_CREATING_FIELD',
     CLEAR_CREATING     = 'CLEAR_CREATING',
     SAVE_MOVIE         = 'SAVE_MOVIE',
+    ADD_FILTER         = 'ADD_FILTER',
+    DELETE_FILTER      = 'DELETE_FILTER'
 }
 
 export default TypeKeys;

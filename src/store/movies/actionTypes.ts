@@ -56,6 +56,17 @@ export interface IClearCreating extends Action {
     type: TypeKeys.CLEAR_CREATING;
 }
 
+export interface IAddFilter extends Action {
+    field: string;
+    type: TypeKeys.ADD_FILTER,
+    value: any;
+}
+
+export interface IDeleteFilter extends Action {
+    field: string;
+    type: TypeKeys.DELETE_FILTER,
+}
+
 export type ActionTypes =
     IGetMovie         |
     IGetMovies        |
@@ -66,5 +77,7 @@ export type ActionTypes =
     IClearEditing     |
     ISetCreatingField | 
     IClearCreating    |
-    ISaveMovie        ;
+    ISaveMovie        |
+    IAddFilter        |
+    IDeleteFilter     ;
 

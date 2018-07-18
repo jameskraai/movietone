@@ -17,6 +17,10 @@ export const reducer = (state: IState = initialState, action: ActionTypes) => {
             return state.setIn(['creating', action.field], action.value);
         case TypeKeys.CLEAR_CREATING:
             return state.set('creating', Map());
+        case TypeKeys.ADD_FILTER:
+            return state.setIn(['filters', action.field], action.value);
+        case TypeKeys.DELETE_FILTER:
+            return state.set('filters', state.get('filters').delete(action.field));
         default:
             return state;
     }

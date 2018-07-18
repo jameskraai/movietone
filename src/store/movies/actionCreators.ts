@@ -15,6 +15,9 @@ export type ClearEditingFn = () => actionTypes.IClearEditing;
 export type SetCreatingFieldFn = (field: string, value: any) => actionTypes.ISetCreatingField;
 export type ClearCreatingFn = () => actionTypes.IClearCreating;
 
+export type AddFilterFn = (field: string, value: any) => actionTypes.IAddFilter;
+export type DeleteFilterFn = (field: string, value: any) => actionTypes.IDeleteFilter;
+
 /**
  * Get Movies optionally with certain parameters
  *
@@ -72,4 +75,15 @@ export const clearCreating: ClearCreatingFn = (): actionTypes.IClearCreating => 
 
 export const saveMovie: SaveMovieFn = (): actionTypes.ISaveMovie => ({
     type: TypeKeys.SAVE_MOVIE,
+});
+
+export const addFilter: AddFilterFn = (field: string, value: any): actionTypes.IAddFilter => ({
+    field,
+    type: TypeKeys.ADD_FILTER,
+    value,
+});
+
+export const deleteFilter: DeleteFilterFn = (field: string): actionTypes.IDeleteFilter => ({
+    field,
+    type: TypeKeys.DELETE_FILTER,
 });
