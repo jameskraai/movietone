@@ -1,4 +1,4 @@
-import { Request, Response, Router } from "express";
+import { Router } from "express";
 import { createMovie } from "./createMovie";
 import { deleteMovie } from "./deleteMovie";
 import { getMovie } from "./getMovie";
@@ -11,7 +11,7 @@ movieController.get('/', getMovies);
 
 movieController.get('/:movieId', getMovie);
 
-movieController.post('/:movieId', createMovie);
+movieController.post('/', createMovie);
 
 movieController.patch('/:movieId', patchMovie);
 

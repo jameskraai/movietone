@@ -4,6 +4,8 @@ import { db } from "../../db";
 import { IMovie } from "../../db/DataTypes";
 
 export const getMovie = (req: Request, res: Response) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     db.query({
         sql: "SELECT * FROM movies WHERE id = ?",
         values: [req.params.movieId]

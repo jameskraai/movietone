@@ -36,6 +36,8 @@ class Builder {
  */
 export const getMovies = (req: Request, res: Response) => {
     const builder = new Builder();
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
     if (req.query.title) {
         builder.addWhere('title', req.query.title);
