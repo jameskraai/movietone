@@ -12,7 +12,9 @@ interface IProps {
 export const List = (props: IProps) => (
     <section>
         <h1>Movie List</h1>
-        {props.list.map(ListItem)}
+        <ul>
+            {props.list.map(ListItem)}
+        </ul>
     </section>
 );
 
