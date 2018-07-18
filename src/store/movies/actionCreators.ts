@@ -1,10 +1,11 @@
-import { IMovie, MovieList } from "../../../api/db/DataTypes";
+import { IMovie, MovieList, MovieMap } from "../../../api/db/DataTypes";
 import * as actionTypes from "./actionTypes";
 import TypeKeys from "./TypeKeys";
 
 
 export type IGetMovies = ({}?) => actionTypes.IGetMovies;
 export type ISetMovies = (movies: MovieList) => actionTypes.ISetMovies;
+export type ISetActiveMovie = (movie: MovieMap) => actionTypes.ISetActiveMovie;
 export type ICreateMovie = (movie: IMovie) => actionTypes.ICreateMovie;
 export type IUpdateMovie = (movie: IMovie) => actionTypes.IUpdateMovie;
 export type IDeleteMovie = (id: string) => actionTypes.IDeleteMovie;
@@ -27,6 +28,11 @@ export const getMovies: IGetMovies = (params?: {}): actionTypes.IGetMovies => ({
 export const setMovies: ISetMovies = (movies: MovieList): actionTypes.ISetMovies => ({
     movies,
     type: TypeKeys.SET_MOVIES,
+});
+
+export const setActiveMovie: ISetActiveMovie = (movie: MovieMap): actionTypes.ISetActiveMovie => ({
+    movie,
+    type: TypeKeys.SET_ACTIVE_MOVIE,
 });
 
 /**
